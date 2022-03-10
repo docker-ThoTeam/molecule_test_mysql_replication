@@ -1,14 +1,18 @@
 #!/bin/bash
-
+echo Setting environment variables
 DOCKER_BUILDKIT=1
 BUILDKIT_PROGRESS=plain
 MYSQL_ROOT_PASSWORD=test
+
+echo "Debug environment: DOCKER_BUILDKIT=${DOCKER_BUILDKIT} - BUILDKIT_PROGRESS=${BUILDKIT_PROGRESS} - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 
 if [[ "x${DOCKER_TAG}" == "x5" ]]; then
     mysql_version=5
 else
     mysql_version=8
 fi
+
+echo "Launching build with mysql version ${mysql_version}"
 
 docker build \
     --build-arg MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD:-test}" \
