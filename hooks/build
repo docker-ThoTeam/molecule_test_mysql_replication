@@ -5,6 +5,8 @@ if [[ "x${DOCKER_TAG}" == "x5" ]]; then
 else
     mysql_version=8
 fi
+DOKER_BUILDKIT=1
+BUILDKIT_PROGRESS=plain
 docker build \
     --build-arg MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD:-test}" \
     --build-arg mysql_version="${mysql_version:-8}" \
