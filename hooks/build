@@ -7,6 +7,6 @@ else
 fi
 docker build \
     --build-arg MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD:-test}" \
-    --build-arg mysql_version="${mysql_version:-8}"
+    --build-arg mysql_version="${mysql_version:-8}" \
     -f "${DOCKERFILE_PATH}" \
     -t "${IMAGE_NAME}" .
