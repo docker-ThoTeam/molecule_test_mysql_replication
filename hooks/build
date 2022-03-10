@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export DOCKER_BUILDKIT=1
+export BUILDKIT_PROGRESS=plain
+
 if [[ "x${DOCKER_TAG}" == "x5" ]]; then
     mysql_version=5
 else
@@ -8,7 +11,7 @@ fi
 
 echo "Launching build with mysql version ${mysql_version}"
 
-DOCKER_BUILDKIT=1 BUILDKIT_PROGRESS=plain docker build \
+docker build \
     --build-arg MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD:-test}" \
     --build-arg mysql_version="${mysql_version:-8}" \
     -f "${DOCKERFILE_PATH}" \
