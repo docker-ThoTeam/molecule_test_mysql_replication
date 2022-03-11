@@ -14,7 +14,7 @@ echo "Launching build with mysql version ${mysql_version}"
 docker build \
     --build-arg MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD:-test}" \
     --build-arg mysql_version="${mysql_version}" \
-    --build-arg mysql_apt_config_version="${mysql_apt_config_version:-toto}" \
+    --build-arg mysql_apt_config_version="${mysql_apt_config_version:-0.8.12-1_all}" \
     --build-arg download_dir="${download_dir:-/tmp/}" \
     --build-arg download_base_url="${download_base_url:-https://dev.mysql.com/get/}" \
     -f "${DOCKERFILE_PATH}" \
