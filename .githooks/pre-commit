@@ -46,7 +46,7 @@ EOF
 fi
 
 # Generate toc for README.md if file is changed
-git diff --cached --name-only | if grep --quiet "README.md"; then
+if ! git diff --cached --quiet -- "README.md"; then
     echo Updating README.md toc
     gh-md-toc --insert --no-backup --hide-footer README.md
 fi
