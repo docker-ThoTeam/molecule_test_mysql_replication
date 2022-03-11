@@ -4,31 +4,32 @@
 <!--ts-->
 * [molecule_test_mysql_replication](#molecule_test_mysql_replication)
 * [Table of contents](#table-of-contents)
-* [Disclaimer](#disclaimer)
 * [Description](#description)
+* [Disclaimer](#disclaimer)
 * [Mysql root password](#mysql-root-password)
-* [Requirements](#requirements)
 * [Automated build](#automated-build)
 * [Building the image](#building-the-image)
+   * [Requirements](#requirements)
    * [Build arguments (aka --build-arg)](#build-arguments-aka---build-arg)
    * [Example build commands](#example-build-commands)
 * [Running a container](#running-a-container)
 * [Contributing](#contributing)
    * [Dependencies](#dependencies)
    * [Installing the git hooks](#installing-the-git-hooks)
+* [Licence](#licence)
 <!--te-->
-
-# Disclaimer
-**TL;DR: /!\ Do not run this image on production /!\ (you've been warned)**
-
-This image has systemd enabled (requiring a few [specific volumes](#launching-a-container))
-and contains a mysql server with a [dummy root password](#mysql-root-password). As such
-it is only intended for automated tests (with original focus on ansible molecule tests) and
-**must not be run on production environments (you've been warned twice)**.
 
 # Description
 A systemd enabled ubuntu image with mysql installed to test ansible role/collection
 for replication/switching using molecule
+
+# Disclaimer
+**TL;DR: /!\ Do not run this image on production /!\ (you've been warned)**
+
+This image has systemd enabled (requiring a few [specific volumes](#running-a-container))
+and contains a mysql server with a [dummy root password](#mysql-root-password). As such
+it is only intended for automated tests (with original focus on ansible molecule tests) and
+**must not be run on production environments (you've been warned twice)**.
 
 # Mysql root password
 The password set for root mysql user at install time is `test`. This can be overidden
@@ -37,15 +38,16 @@ to the `docker build` command
 
 See [building the image](#building-the-image)
 
-# Requirements
-* A functional and fairly recent docker engine
-* Buildkit enabled for docker builds
-
 # Automated build
 This image can be built on dockerhub and will take advantage of the [dockerhub build hook](/hooks/build)
 to adapt the image content based on the target tag (5 or 8)
 
 # Building the image
+
+## Requirements
+* A functional and fairly recent docker engine
+* Buildkit enabled for docker builds
+
 ## Build arguments (aka `--build-arg`)
 
 | Variable                 | Default                    | Desription                                                                                 |
@@ -90,3 +92,6 @@ right after cloning the repo, run
 ```bash
 git config core.hooksPath .githooks
 ```
+
+# Licence
+MIT: see [LICENSE](/LICENSE)
